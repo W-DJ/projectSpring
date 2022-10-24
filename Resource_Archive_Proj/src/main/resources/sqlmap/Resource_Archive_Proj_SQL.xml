@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 매퍼 파일 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+<!--///////////////////////////////// member 시작 /////////////////////////////-->
+<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="member_id">
+<!-- id는 insertBBS, insertMember 이런식으로 수정 가능하다. -->
+
+		<![CDATA[
+		insert into memberList (uId, uPw, uName, uEmail)
+		values
+		(#{uId}, #{uPw}, #{uName}, #{uEmail}) 
+		]]>
+		<!-- #{}는 xml 데이터 표기법, 표현언어랑 다름 -->
+</insert>
+
+<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select uId, uPw, uName, uEmail from memberList where num = #{num}
+ ]]>
+</select>
+
+<select id="select_list" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from memberList order by num desc
+ ]]>
+</select>
+<!--/////////////////////////////// member 끝/////////////////////////////// -->
+
+<!--/////////////////////////////// BBS 시작 ///////////////////////////////-->
+<insert id="insertBBS" parameterType="hashMap" useGeneratedKeys="true" keyProperty="BBS_id">
+		<![CDATA[
+		insert into adminWriteTbl (aName,asubject,acontent,pos,ref,depth,regTM,ip,readCnt,oriFileName,fileSize)
+		values
+		(#{aName}, #{asubject}, #{acontent}, #{pos},#{ref},#{depth},#{regTM},#{ip},#{readCnt},#{oriFileName},#{fileSize}) 
+		]]>
+</insert>
+
+<select id="select_BBS_detail" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select aName,asubject,acontent from adminWriteTbl where num = #{num}
+ ]]>
+</select>
+
+<select id="select_BBS_list" parameterType="hashMap" resultType="hashMap">
+ <![CDATA[
+ select * from adminWriteTbl order by num desc
+ ]]>
+</select>
+<!--/////////////////////////////// BBS 끝/////////////////////////////// -->
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
