@@ -1,5 +1,6 @@
 package pack.spring.bbs;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,30 +14,60 @@ import org.springframework.web.servlet.ModelAndView;
 public class BBSController {
 
 	@RequestMapping(value = "/NotWrite", method = RequestMethod.GET)
-	public ModelAndView ServiceMain() {
-		return new ModelAndView("BBS/NotWrite");
+	public ModelAndView NotWrite() {
+		return new ModelAndView("/BBS/NotWrite");
 	}
 	// 모델과 뷰를 연결하는 컨트롤러 완성
 
+	
 	@Autowired
 	BBSService bbsService;
-
-	@RequestMapping(value = "/NotWrite", method = RequestMethod.POST)
-	public ModelAndView createPost(@RequestParam Map<String, Object> map) {
+	
+	// /////////////////공지사항 글 쓰기 시작
+	@RequestMapping(value ="/NotWrite", method = RequestMethod.POST)
+	public ModelAndView NotWritePost(@RequestParam Map<String, Object> map) {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String aName = this.bbsService.writeNot(map);
-		//this는 모델앤뷰 객체 지칭.
-		
-		if (aName == null) {
-			mav.setViewName("redirect:/NotWrite");
-			//페이지 전환되며 다시 실행
+		String admin = this.bbsService.writeNot(map);
+		if (admin == null) {
+		mav.setViewName("redirect:/NotWrite");
 		} else {
-			mav.setViewName("redirect:/detail?aName=" + aName);
-			//디테일 페이지로 이동
+		mav.setViewName("redirect:/Notdetail?num="+admin);
 		}
 		return mav;
+		}
+	// //////////////////공지사항 글 쓰기 끝
+	
+	// //////////////////공지사항 상세보기 시작
+	@RequestMapping(value = "/Notdetail", method = RequestMethod.GET)
+	public ModelAndView Notdetail(@RequestParam Map<String, Object> map) {
+		
+		Map<String, Object> NotdetailMap = this.bbsService.Notdetail(map);
+	    
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("data", NotdetailMap);
+	    String num = map.get("num").toString();
+	    mav.addObject("num", num);
+	    mav.setViewName("/BBS/Notdetail");
+	    return mav;
+	}
+	
+	// //////////////////공지사항 상세보기 끝
+	
+	// ////////////////////공지사항 전체보기 시작
+	@RequestMapping(value = "/Notlist",method = RequestMethod.GET)
+	public ModelAndView Notlist(@RequestParam Map<String, Object> map) {
+		 List<Map<String, Object>> NotlistMap = this.bbsService.NotList(map);
+		 
+		 ModelAndView mav = new ModelAndView();
+		 mav.addObject("data", NotlistMap);
+		 mav.setViewName("/BBS/Notlist");
+		return mav;
+	}
+	
+	
+	// ////////////////////공지사항 전체보기 시작
 	}
 
-}
+

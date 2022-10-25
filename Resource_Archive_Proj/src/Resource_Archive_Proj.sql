@@ -1,5 +1,6 @@
 create database Resource_Archive_Proj;
 
+
 use Resource_Archive_Proj;
 
 create table memberList(
@@ -201,19 +202,12 @@ create table adminWriteTbl (
 num         int               unique auto_increment,       #글번호
 aName      char(30)         not null,                        #이름
 asubject    char(50)           not null,                        #제목
-acontent    text               not null,                        #내용
-pos          int                    not null,                              #답변글용(position, 답변글 순서)
-ref            int                    not null,                              #답변글용(reference, 원본글/답변글 기준)
-depth        int                    not null,                              #답변글용(답변글 들여쓰기)
-regTM       timestamp       not null,                        #게시글 등록시간
-ip            char(30)         not null,                        #게시글 작성자 IP주소
-readCnt     int                  not null,                        #조회수
-oriFileName char(30)          null,                        #첨부파일 원본이름
-systemFileName char(200)    null,                        #첨부파일 시스템저장이름
-fileSize      int                    null                              #첨부파일 크기
-);
+acontent    text               not null                        #내용
 
+);
+drop table adminWriteTbl;
 desc adminWriteTbl;
+
 select * from adminWriteTbl order by num desc;
 
 create table OftenTbl(

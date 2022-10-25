@@ -5,7 +5,7 @@
 <mapper namespace="member">
 
 <!--///////////////////////////////// member 시작 /////////////////////////////-->
-<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="member_id">
+  <insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="member_id">
 <!-- id는 insertBBS, insertMember 이런식으로 수정 가능하다. -->
 
 		<![CDATA[
@@ -26,30 +26,10 @@
  <![CDATA[
  select * from memberList order by num desc
  ]]>
-</select>
+</select> 
 <!--/////////////////////////////// member 끝/////////////////////////////// -->
 
-<!--/////////////////////////////// BBS 시작 ///////////////////////////////-->
-<insert id="insertBBS" parameterType="hashMap" useGeneratedKeys="true" keyProperty="BBS_id">
-		<![CDATA[
-		insert into adminWriteTbl (aName,asubject,acontent,pos,ref,depth,regTM,ip,readCnt,oriFileName,fileSize)
-		values
-		(#{aName}, #{asubject}, #{acontent}, #{pos},#{ref},#{depth},#{regTM},#{ip},#{readCnt},#{oriFileName},#{fileSize}) 
-		]]>
-</insert>
 
-<select id="select_BBS_detail" parameterType="hashMap" resultType="hashMap">
- <![CDATA[
- select aName,asubject,acontent from adminWriteTbl where num = #{num}
- ]]>
-</select>
-
-<select id="select_BBS_list" parameterType="hashMap" resultType="hashMap">
- <![CDATA[
- select * from adminWriteTbl order by num desc
- ]]>
-</select>
-<!--/////////////////////////////// BBS 끝/////////////////////////////// -->
 
 </mapper>
 

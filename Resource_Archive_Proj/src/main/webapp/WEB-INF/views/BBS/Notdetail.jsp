@@ -62,13 +62,12 @@ button {
 						<tbody>
 							<tr>
 
-								<td>이름<input type="text" name="aName" id="aName">
-
-								</td>
+								<td>이름</td>
+								<td>${data.aName}</td>
 							</tr>
 							<tr>
-								<td>제목 <input type="text" name="asubject" id="asubject">
-								</td>
+								<td>제목</td>
+								<td>${data.asubject}</td>
 							</tr>
 
 
@@ -84,13 +83,15 @@ button {
 					<hr>
 				</div>
 
-					<textarea name="acontent" id="acontent" rows="10"></textarea>
+					<textarea name="acontent" id="acontent" rows="10" style="border: none;text-align: center;">
+					${data.acontent}</textarea>
 					<hr>
 			</main>
 			<aside id="aside" class="dFlex">
 
 				<div id="submitBtn">
-					<button type="submit" id="NoticeBtn">작성완료</button>
+					<a href="/Notlist">목록으로</a>
+					<button type="button" id="NotModBtn">공지사항 수정</button>
 					<button type="reset" id="reset">취소</button>
 				</div>
 			</aside>
