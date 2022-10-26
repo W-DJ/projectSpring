@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,15 +84,15 @@ button {
 					<hr>
 				</div>
 
-					<textarea name="acontent" id="acontent" rows="10" style="border: none;text-align: center;">
-					${data.acontent}</textarea>
+					<textarea name="acontent" id="acontent" rows="10" style="border: none;text-align: center;">${data.acontent}</textarea>
 					<hr>
 			</main>
 			<aside id="aside" class="dFlex">
 
 				<div id="submitBtn">
 					<a href="/Notlist">목록으로</a>
-					<button type="button" id="NotModBtn">공지사항 수정</button>
+					<a href="/Notupd?num=${data.num}">수정하기</a>
+					<a href="/Notdel?num=${data.num}">삭제하기</a>
 					<button type="reset" id="reset">취소</button>
 				</div>
 			</aside>

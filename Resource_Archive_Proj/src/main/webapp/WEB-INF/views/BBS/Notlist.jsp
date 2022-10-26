@@ -43,7 +43,7 @@
 					<tr>
 						<td>	${row.num}</td>
 						<td>
-							<a href="/detail?num=${row.num}">
+							<a href="/Notdetail?num=${row.num}">
 								${row.aName}
 							</a>
 						</td>
@@ -56,6 +56,9 @@
 			</table>
 			<div>
 				<a href="/create">회원가입</a>
+				<a href="/NotWrite">글쓰기</a>
+
+				
 			</div>
 					
 			
