@@ -9,7 +9,7 @@
 		<meta charset="UTF-8">
 		<title>회원 목록 보기</title>
 		<link rel="shortcut icon" href="#">
-		<link rel="stylesheet" href="/resources/style/style.css">
+		<link rel="stylesheet" href="/resources/style/style_BBS.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/resources/script/script.js"></script>		
 	</head>
@@ -55,8 +55,9 @@
 				</tbody>
 			</table>
 			<div>
-				<a href="/create">회원가입</a>
+			
 				<a href="/NotWrite">글쓰기</a>
+				<a href="/">메인으로</a>
 
 				
 			</div>
